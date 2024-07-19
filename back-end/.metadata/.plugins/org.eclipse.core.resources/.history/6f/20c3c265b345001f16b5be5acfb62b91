@@ -1,0 +1,29 @@
+package com.project.repository;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.web.reactive.function.client.WebClient;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.project.dao.GeocodingRepository;
+import com.project.model.Geocoding;
+
+@Repository
+public class GeocodingRepositoryImpl implements GeocodingRepository{
+
+
+	@Override
+	public List<Geocoding> findBySearchByName(String name) {
+
+		JsonNode json = webClient.get().uri(uriBuilder -> uriBuilder
+				.path("/search")
+				.queryParam("name, user.getCity()).bui
+				)
+	}
+
+	
+	}
+	
+}

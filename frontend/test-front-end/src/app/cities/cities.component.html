@@ -1,0 +1,39 @@
+<div class="container-fluid cities">
+
+  <form class="d-flex h-50" role="search" (submit)="this.search($event)">
+    <input class="form-control me-2" [(ngModel)]="this.name" name="name" type="search" placeholder="Cerca città" aria-label="Search">
+    <button class="btn search" type="submit">Cerca</button>
+  </form>
+
+  <div *ngIf="table">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Latitude</th>
+      <th scope="col">Longitude</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let city of cities">
+      <th scope="row"> <button class="weather" (click)="this.getWeather($event, city.latitude, city.longitude)"> {{city.id}} </button>  </th>
+      <td>{{city.name}}</td>
+      <td>{{city.latitude}}</td>
+      <td>{{city.longitude}}</td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div *ngIf="click" class="text-center">
+    <h5> Temperatura: {{weather.temperature_2m}} </h5>
+    <h5> Temperatura massima: {{weather.temperature_2m_max}} </h5>
+    <h5> Temperatura minima: {{weather.temperature_2m_min}} </h5>
+    <h5> Temperatura apparente massima: {{weather.apparent_temperature_max}} </h5>
+    <h5> Temperatura apparente minima: {{weather.apparent_temperature_min}} </h5>
+    <h5> Probabilità di pioggia: {{weather.precipitation_probability}} </h5>
+    <h5> Velocità del vento: {{weather.wind_speed_10m}} </h5>
+  </div>
+
+</div>

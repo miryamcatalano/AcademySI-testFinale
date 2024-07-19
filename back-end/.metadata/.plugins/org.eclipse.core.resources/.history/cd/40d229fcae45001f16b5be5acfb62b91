@@ -1,0 +1,32 @@
+package com.project.repository;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.web.reactive.function.client.WebClient;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.project.dao.GeocodingRepository;
+import com.project.model.Geocoding;
+
+@Repository
+public class GeocodingRepositoryImpl implements GeocodingRepository{
+
+	private WebClient webClient;
+	
+	private ObjectMapper objMapper;
+	
+	public GeocodingRepositoryImpl(ObjectMapper objMapper) {
+		this.objMapper = objMapper;
+	}
+	
+	@Override
+	public List<Geocoding> findBySearchByName(String name) {
+
+		return null;
+	}
+
+	
+	}
+	
+}

@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<div class="register container mb-5" id="register">
+  <div class="box ">
+    <h2 class="text-center">Registrazione</h2>
+    <form (ngSubmit)="onSubmit(form)" #form=ngForm>
+      <div class="d-flex flex-row">
+        <div class="form-group w-50">
+          <label for="usernameReg">Nome utente</label>
+          <input name="nome" type="text" class="form-control text-start" id="usernameReg" placeholder="Inserisci il nome" required [(ngModel)]="registerRequest.name">
+        </div>
+        <div class="form-group w-50">
+          <label for="lastnameReg">Cognome utente</label>
+          <input ngModel name="cognome" type="text" class="form-control text-start" id="lastnameReg" placeholder="Inserisci il cognome" required [(ngModel)]="registerRequest.lastname">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="emailReg">Email</label>
+        <input name="email" type="email" class="form-control text-start" id="emailReg" placeholder="Inserisci l'email" required [(ngModel)]="registerRequest.email" #email=ngModel>
+        <span class="error" *ngIf="!email.valid && email.dirty"> email non formattata</span>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input ngModel name="password" type="password" class="form-control text-start" id="password" placeholder="Inserisci la password" required [(ngModel)]="registerRequest.password" minlength="8">
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Conferma Password</label>
+        <input type="password" (input)="confirmPassword($event)" class="form-control text-start" id="confirm-password" placeholder="Conferma la password" required>
+      </div>
+      <div class="text-end">
+        <button [disabled]="!form.valid || !isNotDisabled" type="submit" class="btn btn-secondary mt-3 btn-block">Registrati</button>
+      </div>
+    </form>
+    <div>
+      <hr class="divider">
+      <h6 class="text-center text-secondary">Sei già registrato? <a class="text-decoration-none" routerLink="/login"> Login </a></h6>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

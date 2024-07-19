@@ -1,0 +1,74 @@
+package com.project.service;
+
+import org.apache.commons.codec.digest.DigestUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.project.dao.UserDao;
+import com.project.dto.UserLoginRequestDto;
+import com.project.model.User;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+	@Autowired
+	private UserDao userDao;
+	
+	@Override
+	public boolean Login(UserLoginRequestDto userLoginRequestDto) {
+
+		User user = new User();
+		
+		user.setEmail(userLoginRequestDto.getEmail());
+		user.setPassword(userLoginRequestDto.getPassword());
+		
+		String sha256hex = DigestUtils.sha256Hex(user.getPassword());
+		
+		User logUser = userDao.findByEmailAndPassword(user.getEmail(), sha256hex);
+		
+		return logUser != null ? true : false;
+	}
+	
+	public UtenteLoginResponseDto issueToken(String email) {
+		
+		byte[] secret = "CiaoCiao159753245Miryam8745214236521423".getBytes();
+		
+		Key key = Keys.hmacShaKeyFor(secret);
+		
+		Utente infoUtente = utenteDao.findUtenteByEmail(email);
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("nome", infoUtente.getNome());
+		map.put("cognome", infoUtente.getCognome());
+		map.put("email", email);
+		
+		List<String> ruoli = new ArrayList<>();
+		
+		for (Ruolo ruolo : infoUtente.getListaRuoli()) {
+			ruoli.add(ruolo.getTipologia().name());
+		}
+		
+		map.put("ruoli", ruoli);
+		
+		Date creation = new Date();
+		Date end = java.sql.Timestamp.valueOf(LocalDateTime.now().plusMinutes(15L));
+		
+		String tokenJwts = Jwts.builder()
+				.setClaims(map)
+				.setIssuer("http://localhost:8080")
+				.setIssuedAt(creation)
+				.setExpiration(end)
+				.signWith(key)
+				.compact();
+		
+		UtenteLoginResponseDto token = new UtenteLoginResponseDto();
+		
+		token.setToken(tokenJwts);
+		token.setTokenCreationTime(creation);
+		token.setTtl(end);
+		
+		return token;
+	}
+
+}

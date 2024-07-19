@@ -1,0 +1,14 @@
+.box{
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  padding: 5vh;
+  background: rgba(255, 139, 7, 0.86);
+  width: 100%;
+}
+.img{
+  width: 60%;
+  height: 40%;
+}
+.head{
+  width: 50%;
+}

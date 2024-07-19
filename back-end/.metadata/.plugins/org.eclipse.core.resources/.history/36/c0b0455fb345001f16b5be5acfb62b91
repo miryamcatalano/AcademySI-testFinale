@@ -1,0 +1,46 @@
+package com.project.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.web.reactive.function.client.WebClient;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.project.model.Geocoding;
+
+import reactor.core.publisher.Mono;
+
+public class WeatherServiceImpl {
+	
+	private WebClient webClient = WebClient.builder().baseUrl("https://geocoding-api.open-meteo.com/v1").build();
+
+	private Geocoding city = new Geocoding();
+	
+	public List<Geocoding> search(String city) {
+		
+		JsonNode json = webClient.get().uri(uriBuilder -> uriBuilder
+				.path("/search")
+				.queryParam("name", city)
+				.build())
+				.retrieve()
+				.bodyToMono(JsonNode.class)
+				.onErrorResume(e -> Mono.empty())
+				.block();
+		
+		json = json.get("results");
+		
+		List<Geocoding> cities = new ArrayList<>();
+		for(JsonNode results : json) {
+			city.setId(results.get("id").intValue());
+			city.setName(results.get("name").textValue());
+			city.setLatitude(results.get("latitude").doubleValue());
+			city.setLongitude(results.get("longitude").doubleValue());
+			
+			cities.add(city);
+		}
+		
+		return cities;
+		
+	}
+
+}

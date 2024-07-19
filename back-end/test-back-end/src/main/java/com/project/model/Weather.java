@@ -1,0 +1,106 @@
+package com.project.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "weather")
+public class Weather {
+	
+	@Column(name = "id")
+	@Id
+	@GeneratedValue
+	private int id;
+	
+	@Column(name = "temperature_2m")
+	private float temperature_2m;
+	
+	@Column(name = "apparent_temperature_max")
+	private float apparent_temperature_max;
+	
+	@Column(name = "apparent_temperature_min")
+	private float apparent_temperature_min;
+	
+	@Column(name = "precipitation_probability")
+	private float precipitation_probability;
+
+	@Column(name = "wind_speed_10m")
+	private float wind_speed_10m;
+
+	@Column(name = "temperature_2m_max")
+	private float temperature_2m_max;
+	
+	@Column(name = "temperature_2m_min")
+	private float temperature_2m_min;
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public float getTemperature_2m() {
+		return temperature_2m;
+	}
+
+	public void setTemperature_2m(float temperature_2m) {
+		this.temperature_2m = temperature_2m;
+	}
+
+	public float getApparent_temperature_max() {
+		return apparent_temperature_max;
+	}
+
+	public void setApparent_temperature_max(float apparent_temperature_max) {
+		this.apparent_temperature_max = apparent_temperature_max;
+	}
+
+	public float getApparent_temperature_min() {
+		return apparent_temperature_min;
+	}
+
+	public void setApparent_temperature_min(float apparent_temperature_min) {
+		this.apparent_temperature_min = apparent_temperature_min;
+	}
+
+	public float getPrecipitation_probability() {
+		return precipitation_probability;
+	}
+
+	public void setPrecipitation_probability(float precipitation_probability) {
+		this.precipitation_probability = precipitation_probability;
+	}
+
+	public float getWind_speed_10m() {
+		return wind_speed_10m;
+	}
+
+	public void setWind_speed_10m(float wind_speed_10m) {
+		this.wind_speed_10m = wind_speed_10m;
+	}
+
+	public float getTemperature_2m_max() {
+		return temperature_2m_max;
+	}
+
+	public void setTemperature_2m_max(float temperature_2m_max) {
+		this.temperature_2m_max = temperature_2m_max;
+	}
+
+	public float getTemperature_2m_min() {
+		return temperature_2m_min;
+	}
+
+	public void setTemperature_2m_min(float temperature_2m_min) {
+		this.temperature_2m_min = temperature_2m_min;
+	}
+
+	
+	
+	
+}

@@ -1,0 +1,50 @@
+.main{
+  margin-top: 8vh;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+}
+.d-block{
+  height: 75vh;
+  width: 100%;
+  height: 100%;
+  opacity: 80%;
+}
+
+.carousel-caption{
+  position: absolute;
+  height: 50vh;
+  top: 45vh;
+  left: 10%;
+  transform: translateY(-50%);
+  text-align: center;
+  width: 50%;
+  padding: 10px;
+  background: rgba(243, 143, 28, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  font-family: 'Roboto', sans-serif;
+  color: #0b6aa5;
+}
+.carousel-caption h3{
+  font-size: 4vw;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.carousel-caption p {
+  font-size: 1.5vw;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+.btn{
+  background-color: #0b6aa5;
+  border-color: #0b6aa5;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  text-shadow: #f38f1c;
+}

@@ -1,0 +1,36 @@
+.navbar{
+  background-color: #095788;
+}
+.box{
+  width: 100%;
+}
+.navbar-brand img{
+  width: 12vw;
+  margin-left: 2vw;
+  border-radius: 7.5px;
+}
+.nav-link{
+  color: #e1f3ff !important;
+  font-size: large;
+}
+.login{
+  border: 1px solid #e1f3ff;
+  background-color: #e1f3ff;
+  color: #0b6aa5;
+  font-size: large;
+  font-weight: bold;
+}
+
+
+.dropdown-menu {
+  --bs-dropdown-bg: #e1f3ff;
+  width: 15vw;
+  right: -10vh;
+}
+.dropdown-toggle{
+  color: #f38f1c;
+  font-size: large;
+  font-weight: bold;
+}
+
+

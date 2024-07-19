@@ -1,0 +1,10 @@
+package com.project.service;
+
+import org.springframework.web.reactive.function.client.WebClient;
+
+public class WeatherServiceImpl {
+	
+	private WebClient webClient = WebClient.builder().baseUrl("https://geocoding-api.open-meteo.com/v1").build();
+
+
+}

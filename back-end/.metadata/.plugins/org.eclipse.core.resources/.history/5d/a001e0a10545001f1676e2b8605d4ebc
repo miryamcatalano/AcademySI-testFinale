@@ -1,0 +1,15 @@
+package com.project.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.project.service.UserService;
+
+import jakarta.ws.rs.Path;
+
+@Path ("/user")
+public class UserController {
+	
+	@Autowired
+	private UserService userService;
+
+}

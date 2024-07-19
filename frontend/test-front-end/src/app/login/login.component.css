@@ -1,0 +1,19 @@
+.login{
+  padding-top: 10vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.box{
+  border: solid;
+  padding: 5vh;
+  width: 30vw;
+  background-color: #e1f3ff;
+}
+input.ng-dirty.ng-valid{
+  border-color: green;
+}
+input.ng-dirty.ng-invalid{
+  border-color: red;
+}

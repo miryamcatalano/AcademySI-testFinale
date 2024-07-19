@@ -1,0 +1,87 @@
+package com.project.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.project.model.Geocoding;
+import com.project.model.Weather;
+
+import reactor.core.publisher.Mono;
+
+@Service
+public class WeatherServiceImpl implements WeatherService{
+	
+	private Geocoding country = new Geocoding();
+	
+	public List<Geocoding> search(String city) {
+		
+		WebClient webClient = WebClient.builder().baseUrl("https://geocoding-api.open-meteo.com/v1").build();
+		
+		JsonNode json = webClient.get().uri(uriBuilder -> uriBuilder
+				.path("/search")
+				.queryParam("name", city)
+				.build())
+				.retrieve()
+				.bodyToMono(JsonNode.class)
+				.onErrorResume(e -> Mono.empty())
+				.block();
+		
+		json = json.get("results");
+		
+		List<Geocoding> countries = new ArrayList<>();
+		for(JsonNode results : json) {
+			country.setId(results.get("id").intValue());
+			country.setName(results.get("name").textValue());
+			country.setLatitude(results.get("latitude").doubleValue());
+			country.setLongitude(results.get("longitude").doubleValue());
+			
+			countries.add(country);
+		}
+		return countries;
+	}
+	
+	public Weather getWeather(double latitude, double longitude) {
+		
+		WebClient webClient = WebClient.builder().baseUrl("https://api.open-meteo.com/v1").build();
+		
+		JsonNode json = webClient.get().uri(uriBuilder -> uriBuilder
+				.path("/forecast")
+				.queryParam("latitude", latitude)
+				.queryParam("longitude", longitude)
+				.queryParam("daily", "weather_code")
+	            .queryParam("daily", "temperature_2m_max")
+	            .queryParam("daily", "temperature_2m_min")
+	            .queryParam("daily", "apparent_temperature_max")
+	            .queryParam("daily", "apparent_temperature_min")
+	            .queryParam("hourly", "temperature_2m")
+	            .queryParam("minutely_15", "apparent_temperature")
+	            .queryParam("hourly", "precipitation_probability")
+	            .queryParam("daily", "wind_speed_10m")
+				.build())
+				.retrieve()
+				.bodyToMono(JsonNode.class)
+				.onErrorResume(e -> Mono.empty())
+				.block();
+		
+
+		Weather weather = new Weather();
+		
+		System.out.println(json.toPrettyString());
+		
+		for(JsonNode results : json) {
+			weather.setTemperature_2m(results.get("hourly").get("temperature_2m").get(0).floatValue());
+			weather.setApparent_temperature(results.get("minutely_15").get("apparent_temperature").get(0).floatValue());
+			weather.setPrecipitation_probability(results.get("hourly").get("precipitation_probability").get(0).floatValue());
+			weather.setWind_speed_10m(results.get("hourly").get("wind_speed_10m").floatValue());
+			weather.setTemperature_2m_max(results.get("daily").get("temperature_2m_max").floatValue());
+			weather.setTemperature_2m_min(results.get("daily").get("temperature_2m_min").floatValue());
+		}
+		
+		return weather;
+	}
+
+}

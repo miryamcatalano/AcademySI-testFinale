@@ -1,0 +1,54 @@
+package com.project.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "ruolo")
+public class Role {
+
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Column(name="ID_G")
+	private int id;
+	
+	@Column(name = "TIPOLOGIA")
+	@Enumerated(EnumType.STRING)
+	private RoleType type;
+	
+	@ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+	@JoinTable
+	(
+		name = "utente_ruolo", joinColumns = @JoinColumn(name = "FK_R", referencedColumnName = "ID_G" ),
+		inverseJoinColumns = @JoinColumn(name="FK_U", referencedColumnName = "ID_U")
+	)
+	private List<User> listUsers = new ArrayList<>();
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public RoleType getType() {
+		return type;
+	}
+
+	public void setType(RoleType type) {
+		this.type = type;
+	}
+
+	public List<User> getListUsers() {
+		return listUsers;
+	}
+
+	public void setListUsers(List<User> listUsers) {
+		this.listUsers = listUsers;
+	}
+	
+	
+}

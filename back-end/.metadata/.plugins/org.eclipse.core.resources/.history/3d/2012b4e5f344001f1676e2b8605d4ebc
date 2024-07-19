@@ -1,0 +1,12 @@
+package com.project.service;
+
+import com.project.dto.UserLoginRequestDto;
+import com.project.dto.UserLoginResponseDto;
+
+public interface UserService {
+	
+	boolean Login(UserLoginRequestDto utenteLoginRequestDto);
+
+	public UserLoginResponseDto issueToken(String email);
+
+}

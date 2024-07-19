@@ -1,0 +1,29 @@
+<nav class="navbar fixed-top container-fluid mb-0">
+  <div class="box d-flex justify-content-between align-items-center">
+    <div class="navbar-brand">
+      <a routerLink="/home"> <img src="/Logo.png"></a>
+    </div>
+    <div class="d-flex flex-row">
+      <button class="btn login" type="button" (click)="onClick()"> Area personale </button>
+      <div class="btn-group">
+        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+          MENU
+        </button>
+        <ul class="dropdown-menu dropdown-menu-lg-end">
+          <li><a class="dropdown-item" routerLink="/home">Home</a></li>
+          <li><a class="dropdown-item" href="#main">Favored cities</a></li>
+          <li><a class="dropdown-item" routerLink="/registrati">Registration</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<!--
+GIALLO #f38f1c, rgba(243, 143, 28, 0.5)
+BLU #0b6aa5
+AZZURRO #2c91d0
+BIANCO #e1f3ff
+FUCSIA #de002d, rgba(222, 0, 45, 0.5)
+ -->
+
+

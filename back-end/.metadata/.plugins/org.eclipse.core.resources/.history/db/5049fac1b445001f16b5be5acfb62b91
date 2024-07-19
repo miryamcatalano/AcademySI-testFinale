@@ -1,0 +1,15 @@
+package com.project.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.project.service.WeatherService;
+
+import jakarta.ws.rs.Path;
+
+@Path ("/weather")
+public class WeatherController {
+	
+	@Autowired
+	private WeatherService weatherService;
+
+}

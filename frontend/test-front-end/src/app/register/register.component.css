@@ -1,0 +1,25 @@
+.register{
+  padding-top: 10vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+.box{
+  border: solid;
+  padding: 5vh;
+  margin-top: 5vh;
+  width: 50vw;
+  background-color: #e1f3ff;
+}
+.form-control{
+  text-align: center;
+}
+.error{
+  color: red;
+}
+input.ng-dirty.ng-valid{
+  border-color: green;
+}
+input.ng-dirty.ng-invalid{
+  border-color: red;
+}

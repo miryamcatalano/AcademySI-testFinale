@@ -1,0 +1,10 @@
+spring.application.name=exerciseDataLayer
+
+# configurazione dataSource
+spring.datasource.dbcp2.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost/appbackend
+spring.datasource.username=root
+spring.datasource.password=admin
+
+# per mostrare le query
+spring.jpa.show-sql=true

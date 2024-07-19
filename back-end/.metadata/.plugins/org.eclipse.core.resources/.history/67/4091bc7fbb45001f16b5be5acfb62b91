@@ -1,0 +1,11 @@
+package com.project.service;
+
+import java.util.List;
+
+import com.project.model.Geocoding;
+
+public interface WeatherService {
+
+	public List<Geocoding> search(String city);
+
+}

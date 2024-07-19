@@ -1,0 +1,11 @@
+package com.project.dao;
+
+import java.util.List;
+
+import com.project.model.Geocoding;
+
+public interface GeocodingRepository {
+	
+	public List<Geocoding> findBySearchByName(String name);
+
+}

@@ -1,0 +1,16 @@
+package com.project.service;
+
+import java.util.List;
+
+import com.project.dao.GeocodingRepository;
+import com.project.model.Geocoding;
+
+public class GeocodingRepositoryImpl implements GeocodingRepository{
+
+	@Override
+	public List<Geocoding> findBySearchByName(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}
