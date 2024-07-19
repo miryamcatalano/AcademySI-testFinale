@@ -1,13 +1,14 @@
-<div class="container-fluid cities">
-
-  <form class="d-flex h-50" role="search" (submit)="this.search($event)">
-    <input class="form-control me-2" [(ngModel)]="this.name" name="name" type="search" placeholder="Cerca città" aria-label="Search">
+<div class="total">
+<div class="container-fluid cities text-center">
+  <h1>CERCA LA TUA CITTÀ</h1>
+  <form class="d-flex h-50 justify-content-center" role="search" (submit)="this.search($event)">
+    <input class="form-control me-2 w-50" [(ngModel)]="this.name" name="name" type="search" placeholder="Cerca città" aria-label="Search">
     <button class="btn search" type="submit">Cerca</button>
   </form>
 
   <div *ngIf="table">
-  <table class="table">
-    <thead>
+  <table class="table text-center">
+    <thead class="w-50">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
@@ -35,5 +36,5 @@
     <h5> Probabilità di pioggia: {{weather.precipitation_probability}} </h5>
     <h5> Velocità del vento: {{weather.wind_speed_10m}} </h5>
   </div>
-
+</div>
 </div>

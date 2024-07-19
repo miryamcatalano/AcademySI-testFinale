@@ -1,6 +1,19 @@
+.total{
+  height: 70%;
+}
+
 .cities{
   margin-top: 15vh;
 }
 .weather{
   text-decoration: none;
+}
+
+div h1{
+  font-family: 'Roboto', sans-serif;
+  font-size: 4vw;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: rgba(243, 143, 28, 0.93);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
